@@ -30,7 +30,7 @@ public class signin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        SI_usernm = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         SI_shwpswrd = new javax.swing.JCheckBox();
         SI_pswrd = new javax.swing.JPasswordField();
@@ -43,18 +43,29 @@ public class signin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Sign in");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        SI_usernm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                SI_usernmActionPerformed(evt);
             }
         });
 
         jButton1.setText("Log in");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         SI_shwpswrd.setText("Show Password");
         SI_shwpswrd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SI_shwpswrdActionPerformed(evt);
+            }
+        });
+
+        SI_pswrd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SI_pswrdActionPerformed(evt);
             }
         });
 
@@ -75,7 +86,7 @@ public class signin extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SI_pswrd, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SI_usernm, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SI_shwpswrd))
                 .addGap(70, 70, 70))
         );
@@ -85,7 +96,7 @@ public class signin extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addGap(48, 48, 48)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SI_usernm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SI_pswrd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -129,9 +140,9 @@ public class signin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void SI_usernmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SI_usernmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_SI_usernmActionPerformed
 
     private void SI_shwpswrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SI_shwpswrdActionPerformed
         if (SI_shwpswrd.isSelected()) {
@@ -145,6 +156,28 @@ public class signin extends javax.swing.JFrame {
         new home().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void SI_pswrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SI_pswrdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SI_pswrdActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String enteredEmail = SI_usernm.getText(); // Your email field
+        String enteredPassword = new String(SI_pswrd.getPassword());
+
+        String adminEmail = "admin@gmail.com";
+        String adminPassword = "admin123";
+
+        if (enteredPassword.equals(adminPassword)) {
+        // Open Admin Page
+        new admin().setVisible(true);
+        this.dispose();
+        } else {
+        // Open User Page
+        new main().setVisible(true);
+        this.dispose();
+}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,10 +217,10 @@ public class signin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField SI_pswrd;
     private javax.swing.JCheckBox SI_shwpswrd;
+    private javax.swing.JTextField SI_usernm;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

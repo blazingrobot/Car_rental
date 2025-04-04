@@ -80,7 +80,7 @@
                   <EmptySpace pref="70" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="SI_pswrd" alignment="1" min="-2" pref="224" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="1" min="-2" pref="224" max="-2" attributes="0"/>
+                      <Component id="SI_usernm" alignment="1" min="-2" pref="224" max="-2" attributes="0"/>
                       <Component id="SI_shwpswrd" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jTextField3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="SI_usernm" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="SI_pswrd" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -114,15 +114,18 @@
             <Property name="text" type="java.lang.String" value="Sign in"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="SI_usernm">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SI_usernmActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Log in"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="SI_shwpswrd">
           <Properties>
@@ -133,6 +136,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="SI_pswrd">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SI_pswrdActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
