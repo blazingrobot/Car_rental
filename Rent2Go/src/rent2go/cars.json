@@ -1,0 +1,10 @@
+{
+    "cars": [
+        {
+            "Car_Code": "C001",
+            "Model": "Sedan",
+            "License_Plate": "123"
+        }
+    
+    ]
+}

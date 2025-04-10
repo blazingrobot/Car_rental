@@ -46,14 +46,24 @@ public class logIn extends javax.swing.JFrame {
         LblNoAcc = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        exit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sign In");
+        setTitle("Car2Go");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(1, 1));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 229, 86));
+
+        jPanel3.setBackground(new java.awt.Color(255, 229, 86));
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 80));
 
+        LblSignIn.setBackground(new java.awt.Color(0, 0, 0));
         LblSignIn.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        LblSignIn.setForeground(new java.awt.Color(48, 53, 57));
         LblSignIn.setText("Sign In");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -74,23 +84,38 @@ public class logIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
 
+        jPanel6.setBackground(new java.awt.Color(255, 229, 86));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 400));
 
         LblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LblEmail.setForeground(new java.awt.Color(48, 53, 57));
         LblEmail.setText("Email:");
 
+        TfEmail.setForeground(new java.awt.Color(0, 0, 0));
+        TfEmail.setToolTipText("");
+        TfEmail.setBorder(null);
+
         TfPswd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TfPswd.setForeground(new java.awt.Color(48, 53, 57));
         TfPswd.setText("Password:");
 
+        Pswd.setBorder(null);
+
+        checkPswrd.setBackground(new java.awt.Color(255, 229, 86));
+        checkPswrd.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        checkPswrd.setForeground(new java.awt.Color(48, 53, 57));
         checkPswrd.setText("Show Password");
+        checkPswrd.setBorder(null);
         checkPswrd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkPswrdActionPerformed(evt);
             }
         });
 
-        BtnLogin.setBackground(new java.awt.Color(102, 204, 255));
+        BtnLogin.setBackground(new java.awt.Color(0, 188, 240));
+        BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         BtnLogin.setText("Log In");
+        BtnLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLoginActionPerformed(evt);
@@ -132,13 +157,15 @@ public class logIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6);
 
+        jPanel7.setBackground(new java.awt.Color(255, 229, 86));
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 50));
 
         LblNoAcc.setFont(new java.awt.Font("Sans Serif Collection", 0, 14)); // NOI18N
+        LblNoAcc.setForeground(new java.awt.Color(48, 53, 57));
         LblNoAcc.setText("Don't have an account?");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel1.setForeground(new java.awt.Color(0, 188, 240));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sign Up");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,23 +198,40 @@ public class logIn extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 188, 240));
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 600));
+
+        exit.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        exit.setForeground(new java.awt.Color(200, 65, 45));
+        exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exit.setText("X");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(257, Short.MAX_VALUE)
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exit)
+                .addContainerGap(546, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
-        pack();
+        setSize(new java.awt.Dimension(800, 600));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
@@ -260,6 +304,10 @@ public class logIn extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitMouseClicked
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -306,6 +354,7 @@ public class logIn extends javax.swing.JFrame {
     private javax.swing.JTextField TfEmail;
     private javax.swing.JLabel TfPswd;
     private javax.swing.JCheckBox checkPswrd;
+    private javax.swing.JLabel exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
