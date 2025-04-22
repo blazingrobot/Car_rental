@@ -1,4 +1,4 @@
-package rent2go;
+package car2go;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,7 +18,7 @@ public class signUp extends javax.swing.JFrame {
     //Variables to store username and password
     private static String username, password;
     //File path for JSON
-    private static String filepath = "src\\rent2go\\user.json";
+    private static String filepath = "C:\\Users\\User\\OneDrive\\Documents\\NetBeansProjects\\Rent2Go\\src\\car2go\\car2go.json";
     private static JSONParser jsonParser = new JSONParser();
     private static JSONObject record = new JSONObject();
     private static JSONArray userlist = new JSONArray();
@@ -35,13 +35,13 @@ public class signUp extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         TfEmail = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        lblPswd = new javax.swing.JLabel();
         Pswd = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        btnCreateAcc = new javax.swing.JButton();
+        lblCPswd = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         TfName = new javax.swing.JTextField();
         checkPswrd = new javax.swing.JCheckBox();
         CPswd = new javax.swing.JPasswordField();
@@ -54,7 +54,6 @@ public class signUp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Car2Go");
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 229, 86));
 
@@ -87,34 +86,34 @@ public class signUp extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 229, 86));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 400));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(48, 53, 57));
-        jLabel6.setText("Email:");
+        lblEmail.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(48, 53, 57));
+        lblEmail.setText("Email:");
 
         TfEmail.setBorder(null);
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(48, 53, 57));
-        jLabel8.setText("Password:");
+        lblPswd.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblPswd.setForeground(new java.awt.Color(48, 53, 57));
+        lblPswd.setText("Password:");
 
         Pswd.setBorder(null);
 
-        jButton3.setBackground(new java.awt.Color(0, 188, 240));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Create Account");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateAcc.setBackground(new java.awt.Color(0, 188, 240));
+        btnCreateAcc.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreateAcc.setText("Create Account");
+        btnCreateAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCreateAccActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(48, 53, 57));
-        jLabel9.setText("Confirm Password:");
+        lblCPswd.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblCPswd.setForeground(new java.awt.Color(48, 53, 57));
+        lblCPswd.setText("Confirm Password:");
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(48, 53, 57));
-        jLabel10.setText("Name:");
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(48, 53, 57));
+        lblName.setText("Name:");
 
         TfName.setBorder(null);
 
@@ -141,38 +140,38 @@ public class signUp extends javax.swing.JFrame {
                     .addComponent(checkPswrd)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(TfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TfName)
                         .addComponent(Pswd)
                         .addComponent(CPswd)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel10)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9)))
+                        .addComponent(lblEmail)
+                        .addComponent(lblName)
+                        .addComponent(lblPswd)
+                        .addComponent(lblCPswd)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel10)
+                .addComponent(lblName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TfName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(lblPswd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Pswd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(lblCPswd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CPswd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkPswrd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCreateAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -223,7 +222,7 @@ public class signUp extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 188, 240));
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 600));
 
-        exit.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         exit.setForeground(new java.awt.Color(200, 65, 45));
         exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exit.setText("X");
@@ -238,16 +237,14 @@ public class signUp extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 245, Short.MAX_VALUE)
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(exit)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addGap(0, 552, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
@@ -256,7 +253,7 @@ public class signUp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCreateAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccActionPerformed
         String name = TfName.getText().trim();
         String email = TfEmail.getText().trim();
         String password = new String(Pswd.getPassword()).trim();
@@ -290,11 +287,16 @@ public class signUp extends javax.swing.JFrame {
             if (userExists) {
                 JOptionPane.showMessageDialog(this, "Email is already registered", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                // Create new user object
+                // Create new user object with all required fields
                 JSONObject newUser = new JSONObject();
                 newUser.put("name", name);
                 newUser.put("email", email);
                 newUser.put("password", password);
+                newUser.put("number", ""); // Default empty values for other fields
+                newUser.put("address", "");
+                newUser.put("gender", "");
+                newUser.put("dob", "");
+                newUser.put("phone", "");
 
                 // Add and save
                 userlist.add(newUser);
@@ -307,7 +309,7 @@ public class signUp extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(this, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                // Optionally clear fields
+                // Clear fields
                 TfName.setText("");
                 TfEmail.setText("");
                 Pswd.setText("");
@@ -322,7 +324,7 @@ public class signUp extends javax.swing.JFrame {
             Logger.getLogger(signUp.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "An error occurred while saving user data.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCreateAccActionPerformed
 
     private void checkPswrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPswrdActionPerformed
         if (checkPswrd.isSelected()) {
@@ -345,6 +347,19 @@ public class signUp extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMouseClicked
 
     public static void main(String args[]) {
+
+        /* Set the Nimbus look and feel */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(adminVehicles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new signUp().setVisible(true);
@@ -352,29 +367,88 @@ public class signUp extends javax.swing.JFrame {
         });
     }
 
-    public static void filecheck() throws FileNotFoundException, IOException, ParseException {
-        FileReader reader = new FileReader(filepath);
+    public static void filecheck() throws IOException, ParseException {
+        // Check if file exists
+        java.io.File jsonFile = new java.io.File(filepath);
 
-        if (reader.ready()) {
+        // If file doesn't exist, create a new JSON structure
+        if (!jsonFile.exists()) {
+            record = new JSONObject();
 
-            Scanner sc = new Scanner(reader);
-            String line = "";
+            // Create admin array if it doesn't exist
+            JSONArray adminArray = new JSONArray();
+            JSONObject adminObj = new JSONObject();
+            adminObj.put("email", "admin");
+            adminObj.put("password", "admin");
+            adminArray.add(adminObj);
+            record.put("admin", adminArray);
 
-            while (sc.hasNext()) {
-                line = line + sc.nextLine();
+            // Create empty users array
+            userlist = new JSONArray();
+            record.put("users", userlist);
+
+            // Create empty cars array
+            JSONArray carsArray = new JSONArray();
+            record.put("cars", carsArray);
+
+            // Write the initial structure to file
+            try (FileWriter fileWriter = new FileWriter(filepath)) {
+                fileWriter.write(record.toJSONString());
+                fileWriter.flush();
             }
 
-            if (!line.equals("")) {
-
-                reader.close();
-                FileReader reader2 = new FileReader(filepath);
-                record = (JSONObject) jsonParser.parse(reader2);
-                userlist = (JSONArray) record.get("users");
-                reader2.close();
-            }
-
+            return;
         }
 
+        try (FileReader reader = new FileReader(filepath)) {
+            record = (JSONObject) jsonParser.parse(reader);
+
+            // Get users array or create if missing
+            userlist = (JSONArray) record.get("users");
+            if (userlist == null) {
+                userlist = new JSONArray();
+                record.put("users", userlist);
+            }
+
+            // Ensure admin array exists
+            if (record.get("admin") == null) {
+                JSONArray adminArray = new JSONArray();
+                JSONObject adminObj = new JSONObject();
+                adminObj.put("email", "admin");
+                adminObj.put("password", "admin");
+                adminArray.add(adminObj);
+                record.put("admin", adminArray);
+            }
+
+            // Ensure cars array exists
+            if (record.get("cars") == null) {
+                record.put("cars", new JSONArray());
+            }
+        } catch (FileNotFoundException e) {
+            // This should not happen as we check file existence before
+            throw new IOException("File not found even after existence check", e);
+        } catch (ParseException e) {
+            // File exists but has invalid JSON format
+            // Create new structure
+            record = new JSONObject();
+            userlist = new JSONArray();
+            record.put("users", userlist);
+
+            JSONArray adminArray = new JSONArray();
+            JSONObject adminObj = new JSONObject();
+            adminObj.put("email", "admin");
+            adminObj.put("password", "admin");
+            adminArray.add(adminObj);
+            record.put("admin", adminArray);
+
+            record.put("cars", new JSONArray());
+
+            // Overwrite corrupted file
+            try (FileWriter fileWriter = new FileWriter(filepath)) {
+                fileWriter.write(record.toJSONString());
+                fileWriter.flush();
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -382,20 +456,20 @@ public class signUp extends javax.swing.JFrame {
     private javax.swing.JPasswordField Pswd;
     private javax.swing.JTextField TfEmail;
     private javax.swing.JTextField TfName;
+    private javax.swing.JButton btnCreateAcc;
     private javax.swing.JCheckBox checkPswrd;
     private javax.swing.JLabel exit;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lblCPswd;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPswd;
     // End of variables declaration//GEN-END:variables
 }

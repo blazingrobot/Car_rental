@@ -1,8 +1,10 @@
-package rent2go;
+package car2go;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,15 +16,12 @@ import org.json.simple.parser.ParseException;
 
 public class logIn extends javax.swing.JFrame {
 
-    //Variables to store username and password
-    private static String email, password;
     //File path for JSON
-    private static String filepath = "src\\rent2go\\user.json";
-    private static JSONParser jsonParser = new JSONParser();
-    private static JSONObject record = new JSONObject();
-    private static JSONArray userlist = new JSONArray();
-    private static JSONArray users = new JSONArray();
-    private static JSONArray admin = new JSONArray();
+    private static final String FILE_NAME = "car2go.json";
+    private static final JSONParser jsonParser = new JSONParser();
+    private JSONObject record;
+    private JSONArray users;
+    private JSONArray admin;
 
     public logIn() {
         initComponents();
@@ -53,12 +52,12 @@ public class logIn extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(1, 1));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 229, 86));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel3.setBackground(new java.awt.Color(255, 229, 86));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 80));
 
         LblSignIn.setBackground(new java.awt.Color(0, 0, 0));
@@ -84,24 +83,26 @@ public class logIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
 
-        jPanel6.setBackground(new java.awt.Color(255, 229, 86));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 400));
 
         LblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LblEmail.setForeground(new java.awt.Color(48, 53, 57));
+        LblEmail.setForeground(new java.awt.Color(0, 0, 0));
         LblEmail.setText("Email:");
 
         TfEmail.setForeground(new java.awt.Color(0, 0, 0));
+        TfEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         TfEmail.setToolTipText("");
-        TfEmail.setBorder(null);
+        TfEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         TfPswd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        TfPswd.setForeground(new java.awt.Color(48, 53, 57));
+        TfPswd.setForeground(new java.awt.Color(0, 0, 0));
         TfPswd.setText("Password:");
 
-        Pswd.setBorder(null);
+        Pswd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Pswd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        checkPswrd.setBackground(new java.awt.Color(255, 229, 86));
+        checkPswrd.setBackground(new java.awt.Color(255, 255, 255));
         checkPswrd.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         checkPswrd.setForeground(new java.awt.Color(48, 53, 57));
         checkPswrd.setText("Show Password");
@@ -131,10 +132,10 @@ public class logIn extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(checkPswrd)
                     .addComponent(LblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TfEmail)
                     .addComponent(TfPswd)
                     .addComponent(Pswd)
-                    .addComponent(BtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                    .addComponent(BtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(TfEmail, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -157,7 +158,7 @@ public class logIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6);
 
-        jPanel7.setBackground(new java.awt.Color(255, 229, 86));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 50));
 
         LblNoAcc.setFont(new java.awt.Font("Sans Serif Collection", 0, 14)); // NOI18N
@@ -201,7 +202,7 @@ public class logIn extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 188, 240));
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 600));
 
-        exit.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         exit.setForeground(new java.awt.Color(200, 65, 45));
         exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exit.setText("X");
@@ -216,16 +217,14 @@ public class logIn extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 250, Short.MAX_VALUE)
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(exit)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addGap(0, 552, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
@@ -235,59 +234,61 @@ public class logIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
-
         try {
-            // Load users and admin data from the JSON file
-            filecheck();
+            loadUserData();
 
             String inputEmail = TfEmail.getText().trim();
             String inputPassword = new String(Pswd.getPassword()).trim();
 
-            boolean found = false;
-
-            // Check in users array
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                String email = (String) user.get("email");
-                String pass = (String) user.get("password");
-
-                if (inputEmail.equals(email) && inputPassword.equals(pass)) {
-                    found = true;
-                    // Open user dashboard (replace with your actual user dashboard class)
-                    userDashboard x = new userDashboard();
-                    x.setVisible(true);
-                    this.dispose();
-                    break;
-                }
+            if (inputEmail.isEmpty() || inputPassword.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter both email and password",
+                        "Login Failed", JOptionPane.WARNING_MESSAGE);
+                return;
             }
 
-            // If not found in users, check in admin array
-            if (!found) {
-                for (Object obj : admin) {
-                    JSONObject adm = (JSONObject) obj;
-                    String email = (String) adm.get("email");
-                    String pass = (String) adm.get("password");
+            // Check in users array
+            if (users != null) {
+                for (Object obj : users) {
+                    JSONObject user = (JSONObject) obj;
+                    String email = (String) user.get("email");
+                    String password = (String) user.get("password");
 
-                    if (inputEmail.equals(email) && inputPassword.equals(pass)) {
-                        found = true;
-                        // Open admin dashboard (replace with your actual admin dashboard class)
-                        adminDashboard x = new adminDashboard();
+                    if (email != null && password != null
+                            && inputEmail.equalsIgnoreCase(email) && inputPassword.equals(password)) {
+                        userHome x = new userHome();
                         x.setVisible(true);
                         this.dispose();
-                        break;
+                        return;
                     }
                 }
             }
 
-            if (!found) {
-                JOptionPane.showMessageDialog(this, "Invalid email or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            // Check in admin array
+            if (admin != null) {
+                for (Object obj : admin) {
+                    JSONObject adm = (JSONObject) obj;
+                    String email = (String) adm.get("email");
+                    String password = (String) adm.get("password");
+
+                    if (email != null && password != null
+                            && inputEmail.equalsIgnoreCase(email) && inputPassword.equals(password)) {
+                        adminHome x = new adminHome();
+                        x.setVisible(true);
+                        this.dispose();
+                        return;
+                    }
+                }
             }
+
+            JOptionPane.showMessageDialog(this, "Invalid email or password",
+                    "Login Failed", JOptionPane.ERROR_MESSAGE);
 
         } catch (IOException | ParseException ex) {
             Logger.getLogger(logIn.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Error reading user data.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Error reading user data: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_BtnLoginActionPerformed
 
     private void checkPswrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPswrdActionPerformed
@@ -309,6 +310,17 @@ public class logIn extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMouseClicked
 
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -317,31 +329,27 @@ public class logIn extends javax.swing.JFrame {
         });
     }
 
-    public static void filecheck() throws FileNotFoundException, IOException, ParseException {
-        FileReader reader = new FileReader(filepath);
-        Scanner sc = new Scanner(reader);
-        StringBuilder line = new StringBuilder();
+    private void loadUserData() throws IOException, ParseException {
+        // Get the path to the JSON file in the same directory as the class files
+        Path path = Paths.get(System.getProperty("user.dir"), "src", "car2go", FILE_NAME);
+        String filepath = path.toString();
 
-        while (sc.hasNext()) {
-            line.append(sc.nextLine());
-        }
-
-        if (!line.toString().isEmpty()) {
-            reader.close();
-            FileReader reader2 = new FileReader(filepath);
-            record = (JSONObject) jsonParser.parse(reader2);
+        try (FileReader reader = new FileReader(filepath)) {
+            record = (JSONObject) jsonParser.parse(reader);
             users = (JSONArray) record.get("users");
             admin = (JSONArray) record.get("admin");
 
-            userlist = new JSONArray();
-            if (users != null) {
-                userlist.addAll(users);
+            if (users == null) {
+                users = new JSONArray();
             }
-            if (admin != null) {
-                userlist.addAll(admin);
+            if (admin == null) {
+                admin = new JSONArray();
             }
-
-            reader2.close();
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Configuration file not found: " + filepath,
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            throw e;
         }
     }
 
